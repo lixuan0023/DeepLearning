@@ -14,6 +14,18 @@ print(softmax(scores))
 import matplotlib.pyplot as plt
 x = np.arange(-2.0, 6.0, 0.1)
 scores = np.vstack([x, np.ones_like(x), 0.2 * np.ones_like(x)])
+print(scores.shape)
 
-plt.plot(x, softmax(scores).T, linewidth=2)
+stm = softmax(scores)
+print(stm.shape)
+print(x.shape,stm[:][0].shape)
+
+fig, ax = plt.subplots()
+ax.plot(x, stm[:][0], linewidth=2,label='x')
+ax.plot(x, stm[:][1], linewidth=2,label='1')
+ax.plot(x, stm[:][2], linewidth=2,label='0.2')
+
+ax.legend(loc='best')
+ax.set_xlabel('x')
+ax.set_ylabel('softmax')
 plt.show()
